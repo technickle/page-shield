@@ -27,10 +27,9 @@ pageShieldValidate = function(){
         console.log(hashThis + ", " + sha512(hashThis));
         var xhr = new XMLHttpRequest();
         xhr.addEventListener("error",function(){
-            //code here will report error
         });
         xhr.addEventListener("load", function(){
-            pageShieldContent.style.visibility = "hidden";
+            console.log(xhr.getResponseHeader());
         })
         xhr.open("GET",sha512(hashThis));
         xhr.send();
