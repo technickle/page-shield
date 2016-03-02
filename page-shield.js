@@ -1,3 +1,7 @@
+//TODO set a session cookie so this doesn't shield the page if the cookie is present
+//TODO allow HTML META tags to configure script for custom hash file locations
+//TODO allow HTML META tags to set permanent cookie once valid password is accepted
+
 //add the page-shield div into the body content
 var pageShieldContent = document.createElement("div")
 
