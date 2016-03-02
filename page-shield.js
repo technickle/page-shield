@@ -1,7 +1,7 @@
 //add the page-shield div into the body content
 var pageShieldContent = document.createElement("div")
 
-pageShieldContent.innerHTML = '<br /><label>Enter Password</label> <input type=password id="page-shield-password" /> <input type=submit id="page-shield-button" onClick="javascript:pageShieldValidate()" />';
+pageShieldContent.innerHTML = '<br /><form id="page-shield-form"><label id="page-shield-label">Enter Password</label> <input type=password id="page-shield-password" /> <input type=submit id="page-shield-button" /></form>';
 pageShieldContent.style.width = "100%";
 pageShieldContent.style.height = "100%";
 pageShieldContent.style.position = "fixed";
@@ -14,26 +14,35 @@ pageShieldContent.style.textAlign = "center";
 pageShieldContent.style.verticalAlign = "middle";
 pageShieldContent.style.display = "table-cell";
 
-injectShield = function(){
-    if (document.body) {document.body.insertAdjacentElement('beforeend', pageShieldContent);}
+function injectShield() {
+    if (document.body) {
+        document.body.insertAdjacentElement('beforeend', pageShieldContent);
+        document.getElementById('page-shield-form').addEventListener("submit", pageShieldValidate);
+        document.getElementById('page-shield-password').focus();
+    }
     else {setTimeout(injectShield,100)}
 };
 
 injectShield();
 
-pageShieldValidate = function(){
-    var hashThis = document.getElementById("page-shield-password").value;
+//handle when a password is entered
+function pageShieldValidate(evt) {
+    evt.preventDefault();
+    var hashThis = document.getElementById("page-shield-password");
     if (hashThis != '') {
-        console.log(hashThis + ", " + sha512(hashThis));
         var xhr = new XMLHttpRequest();
-        xhr.open("GET",sha512(hashThis));
+        xhr.open("GET",sha512(hashThis.value));
         xhr.onreadystatechange = function(orsc){
-            if (xhr.status == 200)
-                {console.log('password valid'); pageShieldContent.style.visibility="hidden"}
-            else
-                {console.log('password probably not valid')}
+            if (xhr.status == 200) {
+                console.log('password valid'); pageShieldContent.style.visibility="hidden"
+            } else {
+                hashThis.value = "";
+                hashThis.focus();
+                console.log('password probably not valid:' + xhr.status)
+            }
         }
         xhr.send();
+        return false;
     }
 };
 
