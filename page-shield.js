@@ -29,7 +29,7 @@ injectShield();
 function pageShieldValidate(evt) {
     evt.preventDefault();
     var hashThis = document.getElementById("page-shield-password");
-    if (hashThis != '') {
+    if (hashThis.value != '') {
         var xhr = new XMLHttpRequest();
         xhr.open("GET",sha512(hashThis.value));
         xhr.onreadystatechange = function(orsc){
@@ -42,8 +42,8 @@ function pageShieldValidate(evt) {
             }
         }
         xhr.send();
-        return false;
     }
+    return false;
 };
 
 
