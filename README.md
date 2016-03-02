@@ -1,16 +1,16 @@
 # page-shield
 AKA really bad security for web pages. Don't use this. Seriously. It's not a substitute for real authentication and encryption. It's a proof-of-concept.
 
-This solution might stop casual users from viewing your page content, but it can easily be bypassed by anyone with a rudimentary knowledge of javascript, html, or even using a browser's Document Object Model inspector. Do not use it to protect confidential or proprietary information!
+This solution might stop casual users from viewing your page content, but it can easily be bypassed by anyone with a rudimentary knowledge of javascript, html, or even using a browser's built-in page inspection tools. Do not use it to protect confidential or proprietary information!
 
 ## how to use
-Copy the `page-shield.js` file to your own web server, then a `script` element in the `head` section of your web page source code which points to your copy, similar to the following:
+Copy the `page-shield.js` file to your own web server, then add a `<script>` element within the `<head>` section of your web page source code which points to your copy, similar to the following:
 
 ```
 <script type="text/javascript" src="page-shield.js">
 ```
 
-Adding this should mask out the content of your web page, and display a password prompt. When a valid password is entered, the prompt disappears and the main web page content is revealed.
+Adding this should mask out the content of your web page, and display a password prompt. When a valid password is entered, the prompt disappears and the main web page content is revealed. You must create at least one password file (see below) in order to allow visitors to view your content.
 
 Multiple passwords are supported.
 
