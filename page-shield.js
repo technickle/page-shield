@@ -26,12 +26,13 @@ pageShieldValidate = function(){
     if (hashThis != '') {
         console.log(hashThis + ", " + sha512(hashThis));
         var xhr = new XMLHttpRequest();
-        xhr.addEventListener("error",function(){
-        });
-        xhr.addEventListener("load", function(){
-            console.log(xhr.getResponseHeader());
-        })
         xhr.open("GET",sha512(hashThis));
+        xhr.onreadystatechange = function(orsc){
+            if (xhr.status == 200)
+                {console.log('password valid'); pageShieldContent.style.visibility="hidden"}
+            else
+                {console.log('password probably not valid')}
+        }
         xhr.send();
     }
 };
