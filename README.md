@@ -15,7 +15,7 @@ Adding this should mask out the content of your web page, and display a password
 Multiple passwords are supported.
 
 ## managing passwords
-Each password is stored as a separate file on your web server. The contents of each file are irrelevant as far as password validation is concerned, so you can store information in it if you like, such as the names of the people you have given that password to, or a password hint. Do not save the original password in this file!
+Each password is stored as a separate file on your web server. The contents of each file are irrelevant as far as password validation is concerned (*but should not be empty if you use jekyll or other site-compilation tools*), so you can store information in it if you like, such as the names of the people you have given that password to, or a password hint. Do not save the original password in this file!
 
 ### creating a password
 Creating a password is as simple as using the [generator](http://technickle.github.io/page-shield/generate-hash.html), which will give you a filename based upon the password you entered.
