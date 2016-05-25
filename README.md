@@ -7,7 +7,7 @@ This solution might stop casual users from viewing your page content, but it can
 Copy the `page-shield.js` file to your own web server, then add a `<script>` element within the `<head>` section of your web page source code which points to your copy, similar to the following:
 
 ```
-<script type="text/javascript" src="page-shield.js">
+<script type="text/javascript" src="page-shield.js"></script>
 ```
 
 Adding this should mask out the content of your web page, and display a password prompt. When a valid password is entered, the prompt disappears and the main web page content is revealed. You must create at least one password file (see below) in order to allow visitors to view your content.
